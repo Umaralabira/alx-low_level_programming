@@ -1,11 +1,13 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _MAIN_H
+#define _MAIN_H
 
-#include <stdio.h>
+int _putchar(char c);
+char *create_array(unsigned int size, char c);
+char *_strdup(char *str);
+char *str_concat(char *s1, char *s2);
+int **alloc_grid(int width, int height);
+void free_grid(int **grid, int height);
+char *argstostr(int ac, char **av);
+char **strtow(char *str);
 
-void positive_or_negative(int i);
-int largest_number(int a, int b, int c);
-int convert_day(int month, int day);
-void print_remaining_days(int month, int day, int year);
-
-#endif /* MAIN_H */
+#endif
