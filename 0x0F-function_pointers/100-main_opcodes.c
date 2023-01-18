@@ -1,36 +1,44 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 /**
- * main - main function that prints opcodes
- * @argc: argument count
+ * main - Entry point
+ *
+ * Description: A program that prints the opcodes
+ *              of its own main function.
+ *              Usage: ./main number_of_bytes
+ *
+ * @argc: argument counter
  * @argv: argument vector
- * Return: 0
- */
+ *
+ * Return: Always Successful
+*/
+
 int main(int argc, char *argv[])
 {
-	int i;
-	int j;
+	int index, nbytes;
+	char *ptr = (char *) main;
 
-	if (argc != 2){
+	if (argc != 2)
+	{
 		printf("Error\n");
-		return (1);
+		exit(1);
 	}
 
-	j = atoi(argv[1]);
-
-	if (j < 0){
+	nbytes = atoi(argv[1]);
+	if (nbytes < 0)
+	{
 		printf("Error\n");
 		exit(2);
 	}
-	for (i = 0; i < j; i++){
-		printf("%02hhx", *((char *)main + i));
-		if (i < j - 1){
+
+	for (index = 0; index < nbytes; index++)
+	{
+		printf("%02x", ptr[index] & 0xFF);
+		if (index != nbytes - 1)
 			printf(" ");
-		}
-		else{
-			printf("\n");
-		}
 	}
+	printf("\n");
 	return (0);
 }
